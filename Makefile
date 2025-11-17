@@ -6,7 +6,7 @@ CC=cc
 SOURCE=$(wildcard $(SRC)/*.c)
 COMMIT="\"$(shell git rev-parse HEAD | head -c6)\""
 CFLAGS=-w -O3 -std=c2x -Dcommit=$(COMMIT) 
-
+PREFIX=/usr
 .PHONY: strlx
 
 strlx: ${SOURCE}
@@ -16,8 +16,12 @@ strlx: ${SOURCE}
 
 # run install with sudo/doas.
 install: strlx
-	@echo "[in] $< -> /usr/bin/$<"
-	@cp $< /usr/bin
+	@echo "[in] $< -> $(PREFIX)/bin/$<"
+	@cp $< $(PREFIX)/bin
 
 clean: 
 	@rm -f strlx
+
+uninstall:
+	@echo "rm $(PREFIX)/bin/strlx"
+	@rm $(PREFIX)/bin/strlx
