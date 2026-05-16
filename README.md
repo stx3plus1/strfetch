@@ -1,6 +1,8 @@
 # strlx
 A "getting started" guide for version 3.0.
 
+16/05/26: We're so back. May patch or update sometime with some more modules. Or rewrite it in pure GNU Awk.
+
 ## Basics
 <img src=".github/setup.png">
 
